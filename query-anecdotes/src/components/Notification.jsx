@@ -1,8 +1,5 @@
-import { useContext } from "react";
-import NotificationContext from "./NotificationContext";
 import { useNotificationValue } from "../utils";
 
-// eslint-disable-next-line react/prop-types
 const Notification = () => {
   const style = {
     border: "solid",
@@ -10,14 +7,12 @@ const Notification = () => {
     borderWidth: 1,
     marginBottom: 5,
   };
-
   const notification = useNotificationValue();
-  console.log("NOTIFICATION: " + notification);
 
-  if (notification === null) {
-    return null;
+  if (notification) {
+    return <div style={style}>{notification}</div>;
   }
-  return <div style={style}>{notification}</div>;
+  return null;
 };
 
 export default Notification;

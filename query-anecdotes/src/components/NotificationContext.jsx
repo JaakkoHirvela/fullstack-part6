@@ -17,7 +17,6 @@ const NotificationContext = createContext();
 export const NotificationContextProvider = (props) => {
   const [notification, notificationDispatch] = useReducer(notificationReducer, null);
 
-  // eslint-disable-next-line react/prop-types
   return <NotificationContext.Provider value={[notification, notificationDispatch]}>{props.children}</NotificationContext.Provider>;
 };
 

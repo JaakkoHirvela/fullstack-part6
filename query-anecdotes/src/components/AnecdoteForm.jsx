@@ -12,6 +12,13 @@ const AnecdoteForm = () => {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["anecdotes"] });
     },
+    onError: (error) => {
+      const { error: errorMessage } = error.response.data;
+      notificationDispatch({ type: SET_NOTIFICATION, notification: errorMessage });
+      setTimeout(() => {
+        notificationDispatch({ type: CLEAR_NOTIFICATION });
+      }, 5000);
+    },
   });
 
   const onCreate = (event) => {
